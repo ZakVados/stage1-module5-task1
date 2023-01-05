@@ -1,5 +1,6 @@
 package com.epam.mjc;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiFunction;
@@ -31,7 +32,17 @@ public class InterfaceCreator {
     }
 
     public Supplier<List<String>> filterCollection(List<String> values) {
-        throw new UnsupportedOperationException("You should implement this method.");
+        return () -> {
+            List<String> res = new ArrayList<>();
+            for (String str : values) {
+                if (Character.isLowerCase(str.charAt(0))) continue;
+                if (str.charAt(str.length()-1) != '.') continue;
+                if (str.split(" ").length <= 3) continue;
+                res.add(str);
+
+            }
+            return res;
+        };
     }
 
     public Function<List<String>, Map<String, Integer>> stringSize() {
