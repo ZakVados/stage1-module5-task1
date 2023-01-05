@@ -20,7 +20,14 @@ public class InterfaceCreator {
     }
 
     public Consumer<List<Integer>> addEvenValuesAtTheEnd() {
-        throw new UnsupportedOperationException("You should implement this method.");
+        return x -> {
+            int xLen = x.size();
+            for (int i = 0; i < xLen; i++) {
+                if (x.get(i) % 2 == 0) {
+                    x.add(x.get(i));
+                }
+            }
+        };
     }
 
     public Supplier<List<String>> filterCollection(List<String> values) {
